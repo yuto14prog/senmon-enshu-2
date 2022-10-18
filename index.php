@@ -32,7 +32,6 @@
 			setcookie( "PHPSESSID", '', time()-1800, '/' );
 			session_destroy();
 		} else {
-			// 追記しました
 			$page->setTitle( 'エラー' );
 			$body = '<p>原因不明のエラーが発生しました．</p>';
 			$page->setBody( $body );
