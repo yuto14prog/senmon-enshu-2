@@ -17,7 +17,24 @@ class My_HTML extends Page {
 	}
 
 	function endPage() {
+		// $body = '';
+		// $body = $body.'<p>終わりです</p>';
+
+		$dbfile = '/xampp/sqlite/answer.db';
+		if ( ! file_exists( $dbfile ) ) {
+			$msg = $dbfile.'　がありません．<br>';
+		} else {
+			$msg = $dbfile.'　を開きます．<br>';
+			$dsn = 'sqlite:'.$dbfile;
+
+			$sql = 'INSERT INTO kaitou VALUES (1, 0, 1, 0, "shimei", "password")';
+
+			$db = new PDO( $dsn );
+			$db->query($sql);
+			$db = null;
+		}
 		$body = '';
+		$body = $body.'<p>'.$msg.'</p>';
 		$body = $body.'<p>終わりです</p>';
 
 		return $body;
