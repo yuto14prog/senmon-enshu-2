@@ -9,12 +9,15 @@
 		$msg = $dbfile.'　を開きます．<br>';
 		$dsn = 'sqlite:'.$dbfile;
 
-		$sql = 'INSERT INTO kaitou VALUES (1, 0, 1, 0, "shimei", "password")';
+		$sql = 'SELECT * FROM kaitou';
 
 		$db = new PDO( $dsn );
-		$db->query($sql);
+		$result = $db->query($sql);
 		$db = null;
 	}
+
+	$data = $result->fetchAll();
+	print_r($data);
 
 	$body = '';
 	$body = $body.'<p>'.$msg.'</p>';
