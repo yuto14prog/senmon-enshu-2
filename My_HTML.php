@@ -21,6 +21,11 @@ class My_HTML extends Page {
 		$q2 = $_SESSION['q2'];
 		$shimei = $_SESSION['shimei'];
 		$password = $_SESSION['password'];
+		$q2_data = [1 => 0, 2 => 0, 3 => 0,];
+		foreach($q2 as $key => $value) {
+			$q2_data[$value] = 1;
+		}
+
 		$sql = 'INSERT INTO kaitou VALUES ('.$q1.','. '0, 1, 0' .',"'.$shimei.'","'.$password.'")';
 		return $sql;
 	}
