@@ -16,6 +16,15 @@ class My_HTML extends Page {
 		$this->q2 = [ 1 => '陸上', 2 => '柔道', 3 => '卓球', ];
 	}
 
+	function make_cmd_sql_insert() {
+		$q1 = $_SESSION['q1'];
+		$q2 = $_SESSION['q2'];
+		$shimei = $_SESSION['shimei'];
+		$password = $_SESSION['password'];
+		$sql = 'INSERT INTO kaitou VALUES ('.$q1.','. '0, 1, 0' .',"'.$shimei.'","'.$password.'")';
+		return $sql;
+	}
+
 	function endPage() {
 		// $body = '';
 		// $body = $body.'<p>終わりです</p>';
@@ -27,7 +36,7 @@ class My_HTML extends Page {
 			$msg = $dbfile.'　を開きます．<br>';
 			$dsn = 'sqlite:'.$dbfile;
 
-			$sql = 'INSERT INTO kaitou VALUES (1, 0, 1, 0, "shimei", "password")';
+			$sql = $this->make_cmd_sql_insert();
 
 			$db = new PDO( $dsn );
 			$db->query($sql);
