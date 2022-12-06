@@ -28,7 +28,7 @@ class My_HTML extends Page {
 
 		$str = '';
 		foreach ($q2_data as $q2key => $q2value) {
-				$str = $str.$q2value.',';
+			$str = $str.$q2value.',';
 		}
 
 		$sql = 'INSERT INTO kaitou VALUES ('.$q1.','.$str.'"'.$shimei.'","'.$password.'")';

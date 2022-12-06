@@ -1,5 +1,5 @@
 <?php
-	include_once	'Page.php';
+	include_once	'My_HTML.php';
 
 	$dbfile = '/xampp/sqlite/answer.db';
 
@@ -18,11 +18,19 @@
 
 	$data = $result->fetchAll();
 	print_r($data);
+	print_r('<br> -------------------------- <br>');
+	$a2 = ['q21' => 0,'q22' => 0,'q23' => 0,];
+	foreach ($data as $key => $answer) {
+		foreach ($a2 as $field => $value) {
+			$a2[$field] += $answer[$field];
+		}
+	}
+	print_r($a2);
 
 	$body = '';
 	$body = $body.'<p>'.$msg.'</p>';
 
-	$page = new Page();
+	$page = new My_HTML();
 	$page->setTitle('データベースアクセス');
 	$page->setBody( $body );
 	$page->display();
